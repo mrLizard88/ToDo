@@ -1,5 +1,6 @@
 import pickle
-from datetime import datetime, timedelta
+from datetime import datetime
+
 
 class zadanie:
 
@@ -13,7 +14,12 @@ class zadanie:
         data_utworzenia = datetime.strftime(self.data, "%Y-%m-%d")
         dni_temu = (datetime.now() - self.data).days
 
-        return f" Zadanie: {self.numer_zadania}\nPriorytet: {self.priorytet}\nOpis: {self.opis}\nCzas utworzenia: {data_utworzenia}\nDni temu: {dni_temu}\n"
+        return (
+                f"Zadanie: {self.numer_zadania}\nPriorytet: {self.priorytet}"
+                f"\nOpis: {self.opis}\nCzas utworzenia: {data_utworzenia}\n"
+                f"Dni temu: {dni_temu}\n"
+                )
+
 
 class lista_zadan:
 
@@ -23,7 +29,7 @@ class lista_zadan:
     def __init__(self, plik):
         self.plik = plik
         try:
-            with open (self.plik, "rb") as f:
+            with open(self.plik, "rb") as f:
                 self.lista = pickle.load(f)
                 print("Czytam")
                 self.numer_zadania = max(x.numer_zadania for x in self.lista)
@@ -46,5 +52,5 @@ class lista_zadan:
                 return
 
     def zapisz_listę(self):
-        with open (self.plik, "wb") as f:
+        with open(self.plik, "wb") as f:
             pickle.dump(self.lista, f)
