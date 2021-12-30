@@ -5,11 +5,13 @@ if __name__ == "__main__":
     lista = ToDo_Class.lista_zadan('C:/plik.pcl')
 
     while True:
-        polecenie = int(input("""1 - Dodaj zadanie
-2 - Skasuj zadania
-3 - Wyświetl zadania
-0 - Zakończ program
-"""))
+        polecenie = int(input(
+                              "1 - Dodaj zadanie\n"
+                              "2 - Skasuj zadania\n"
+                              "3 - Wyświetl zadania\n"
+                              "0 - Zakończ program\n"
+                              ))
+
         if polecenie == 1:
             priorytet = input("Podaj priorytet: ")
             opis = input("Podaj opis: ")
